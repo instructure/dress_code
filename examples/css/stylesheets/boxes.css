@@ -1,0 +1,34 @@
+/* @styleguide Padded boxes
+
+When you need to add a bit of padding, use the following classes.
+
+```html
+<div class="pad-box-mega">mega</div>
+<div class="pad-box">normal</div>
+<div class="pad-box-mini">mini</div>
+<div class="pad-box-micro">micro</div>
+```
+*/
+
+.pad-box { padding: 20px; }
+.pad-box-mega { padding: 40px; }
+.pad-box-mini { padding: 10px; }
+.pad-box-micro { padding: 5px; }
+
+/* @styleguide Content boxes
+
+Content boxes have some basic styling ready for you, out of the box.
+
+```html
+<div class="content-box-mega">mega</div>
+<div class="content-box">normal</div>
+<div class="content-box-mini">mini</div>
+<div class="content-box-micro">micro</div>
+```
+*/
+
+.content-box { padding: 20px; margin: 20px 0; border: solid 1px; }
+.content-box-mega { padding: 40px; margin: 40px 0; border: solid 1px;}
+.content-box-mini { padding: 10px; margin: 10px 0; border: solid 1px; }
+.content-box-micro { padding: 5px; margin: 5px 0; border: solid 1px; }
+
