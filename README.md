@@ -79,7 +79,7 @@ Comments like the following will be extracted from your stylesheets:
     ```
     */
 
-The content of your comment block is parsed as yaml. HTML code fences will be syntax highlighted and rendered in your styleguide.
+The content of your comment block is parsed as markdown with github-style code fences. HTML code fences will be syntax highlighted and rendered (YES RENDERED!) in your styleguide.
 
 Feel free to extend `DressCode::Extractor` to match your own style of comments.
 
