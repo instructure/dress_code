@@ -1,0 +1,36 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <title>Styleguide</title>
+    <style>{{{dress_code_css}}}</style>
+    {{#css}}
+    <link href="{{.}}" rel="stylesheet" charset="utf-8">
+    {{/css}}
+  </head>
+  <body>
+
+  <nav id="nav">
+    <ul>
+      {{#docs}}
+      <li><a href="#{{id}}">{{component}}</a></li>
+      {{/docs}}
+    </ul>
+  </nav>
+
+  <section id="docs">
+    {{#docs}}
+    <article id="{{id}}">
+      <h2>{{component}}</h2>
+      <p><small>Defined in <em>{{file}}</em></small></p>
+      {{{prose}}}
+    </article>
+    {{/docs}}
+  </section>
+
+  {{#js}}
+  <script src="{{.}}"></script>
+  {{/js}}
+  <script>{{{dress_code_js}}}</script>
+

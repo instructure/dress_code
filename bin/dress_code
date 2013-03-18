@@ -1,0 +1,95 @@
+#!/usr/bin/env ruby
+
+require 'colored'
+require 'yaml'
+require_relative '../lib/dress_code'
+
+help = "
+
+  Usage:
+
+    dress_code [config_path]
+
+  Example:
+
+    dress_code config/styleguide.yml
+
+"
+
+config_help = "
+  Example config yaml file:
+
+    #{'# required - the file to generate'.yellow}
+    out_file: styleguide/index.html
+
+    #{'# required - the files to extract docs from'.yellow}
+    glob: stylesheets/**/*.css
+
+    #{'# optional - components can display where they are defined, this will be'.yellow}
+    #{'# stripped from that definition'.yellow}
+    base_dir: stylesheets
+
+    #{'# optional - mustache template rendered for the `out_file`'.yellow}
+    template: styleguide/index.mustache
+
+    #{'# optional - CSS files to load in the template'.yellow}
+    css:
+      - public/stylesheets/framework.css
+      - public/stylesheets/app.css
+
+
+    #{'# optional - Inline DressCode CSS styles, defaults to true'.yellow}
+    dress_code_css: false
+
+    #{'# optional - JavaScript files to load in the template'.yellow}
+    js:
+      - public/js/behaviors.js
+
+    #{'# optional - Inline DressCode JS, defaults to true'.yellow}
+    dress_code_js: false
+
+"
+
+config_path = ARGV[0]
+
+if ['--help', '-h'].include?(ARGV[0])
+  puts help + config_help
+  exit
+end
+
+if !config_path
+  puts help
+  exit
+end
+
+begin
+  config = YAML::load_file(config_path)
+rescue
+  puts help + "Error: Could not find config file at '#{config_path}'.".red
+  exit
+end
+
+if !config['out_file']
+  puts config_help + "Error: I need an `out_file` in your config, view the sample above.".red
+  exit
+end
+
+if !config['glob']
+  puts config_help + "Error: I need a `glob` in your config, view the sample above.".red
+  exit
+end
+
+extractor = DressCode::Extractor.new({
+  :files => Dir.glob(config['glob']),
+  :base_dir => config['base_dir']
+})
+generator = DressCode::Generator.new({
+  :out_file => config['out_file'],
+  :docs => extractor.docs,
+  :css => config['css'],
+  :js => config['js'],
+  :dress_code_css => config['dress_code_css'],
+  :dress_code_js => config['dress_code_js']
+})
+generator.generate()
+
