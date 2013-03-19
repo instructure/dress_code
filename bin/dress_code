@@ -89,7 +89,8 @@ generator = DressCode::Generator.new({
   :css => config['css'],
   :js => config['js'],
   :dress_code_css => config['dress_code_css'],
-  :dress_code_js => config['dress_code_js']
+  :dress_code_js => config['dress_code_js'],
+  :template => config['template']
 })
 generator.generate()
 

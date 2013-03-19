@@ -1,8 +1,0 @@
-# run `$ dress_code styleguide.yml` from this directory
-glob: stylesheets/**/*.css
-base_dir: stylesheets
-out_file: styleguide.html
-css:
-  - stylesheets/main.css
-  - stylesheets/boxes.css
-

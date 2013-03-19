@@ -5,7 +5,7 @@ require 'debugger'
 class DressCode::Generator
 
   STATIC = "#{File.dirname(__FILE__)}/../static"
-  TEMPLATE = File.read("#{STATIC}/styleguide.html.mustache")
+  TEMPLATE = "#{STATIC}/styleguide.html.mustache"
 
   def initialize(opts)
     @out_file = opts[:out_file] || 'styleguide.html'
@@ -18,7 +18,8 @@ class DressCode::Generator
   end
 
   def generate
-    write_file(@out_file, Mustache.render(@template, {
+    template = File.read(@template)
+    write_file(@out_file, Mustache.render(template, {
       :docs => map_docs,
       :css => @css,
       :js => @js,
