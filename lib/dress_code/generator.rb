@@ -1,6 +1,5 @@
 require 'mustache'
 require_relative '../dress_code'
-require 'debugger'
 
 class DressCode::Generator
 

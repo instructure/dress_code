@@ -1,6 +1,5 @@
 require_relative '../dress_code'
 require_relative 'document'
-require 'debugger'
 
 class DressCode::Extractor
 
