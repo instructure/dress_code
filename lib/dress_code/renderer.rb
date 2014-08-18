@@ -14,7 +14,7 @@ class DressCode::Renderer < Redcarpet::Render::HTML
     else
       syntax
     end
-    "<div class='code-demo'>#{inner}</div>"
+    "#{inner}"
   end
 
 end
