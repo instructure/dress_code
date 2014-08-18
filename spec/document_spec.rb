@@ -20,7 +20,7 @@ describe DressCode::Document do
   end
 
   it "renders html with the the DressCode renderer" do
-    @doc.to_html.should == "<p>Hello</p>\n<div class='code-demo'><div class=\"highlight\"><pre>hello\n</pre></div> <div class='code-rendered'>hello\n</div></div>"
+    @doc.to_html.should == "<p>Hello</p>\n<div class=\"highlight\"><pre>hello\n</pre></div> <div class='code-rendered'>hello\n</div>"
   end
 
 end
