@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'rspec'
 
   s.name        = "dress_code"
-  s.version     = "1.1.0"
+  s.version     = "1.2.0"
   s.authors     = ["Ryan Florence", "Cameron Matheson"]
   s.homepage    = "http://github.com/instructure/dress_code"
   s.summary     = "CSS Documentation and Styleguide Generator"
