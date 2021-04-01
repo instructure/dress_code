@@ -1,7 +1,7 @@
 require_relative 'spec_helper'
 
 describe DressCode::Extractor do
-  let(:file) { Tempfile.new }
+  let(:file) { Tempfile.new(encoding: 'bom|utf-8') }
   after(:each) { file.unlink }
 
   it "extracts documentation from files" do
