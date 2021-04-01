@@ -32,3 +32,27 @@ a { background: BurlyWood; }
   path
 end
 
+
+def create_utf8_test_file
+  path = "tmp/test-utf8.css"
+  directory = File.dirname(path)
+  FileUtils.mkdir_p(directory) unless Dir.exists?(directory)
+  test_file_content = "
+/* @styleguide button
+
+```html
+<button>I am a button</button>
+```
+
+*/
+
+button {
+  content: '▲';
+}
+"
+  File.open(path, 'w') do |file|
+    file.write(test_file_content)
+  end
+  path
+end
+

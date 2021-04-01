@@ -1,16 +1,13 @@
 require_relative 'spec_helper'
 
 describe DressCode::Extractor do
-
-  before :each do
+  it "extracts documentation from files" do
     @test_file = create_test_file
     @extractor = DressCode::Extractor.new({
       :files => [@test_file],
       :base_dir => 'tmp'
     })
-  end
 
-  it "extracts documentation from files" do
     docs = @extractor.extract
     docs.length.should == 2
     docs[0].component.should == 'anchor'
@@ -23,5 +20,14 @@ describe DressCode::Extractor do
     docs[1].relative_path.should == "test.css"
   end
 
+  it "doesn't choke on utf8 content" do
+    @test_file = create_utf8_test_file
+    @extractor = DressCode::Extractor.new({
+      :files => [@test_file],
+      :base_dir => 'tmp'
+    })
+
+    @extractor.extract
+  end
 end
 
