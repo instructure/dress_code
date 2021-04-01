@@ -12,12 +12,12 @@ class DressCode::Generator
     @css = opts[:css]
     @js = opts[:js]
     @template = opts[:template] || TEMPLATE
-    @inline_css = opts[:dress_code_css].nil? ? true : !!opts[:dress_code_css] 
-    @inline_js = opts[:dress_code_js].nil? ? true : !!opts[:dress_code_js] 
+    @inline_css = opts[:dress_code_css].nil? ? true : !!opts[:dress_code_css]
+    @inline_js = opts[:dress_code_js].nil? ? true : !!opts[:dress_code_js]
   end
 
   def generate
-    template = File.read(@template)
+    template = File.read(@template, encoding: 'bom|utf-8')
     write_file(@out_file, Mustache.render(template, {
       :docs => map_docs,
       :css => @css,
