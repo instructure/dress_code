@@ -21,7 +21,7 @@ class DressCode::Extractor
   end
 
   def parse_file(path)
-    src = File.read(path)
+    src = File.read(path, encoding: 'bom|utf-8')
     matches = scan(src)
     return unless matches.length
     matches.map { |match| create_doc(match, path) }
